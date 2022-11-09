@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import {useCall, useContractFunction, useSendTransaction } from "@usedapp/core"
+// import { useState, useEffect } from "react"
+import { useContractFunction} from "@usedapp/core"
 import PS from "../chain-info/contracts/Splitter.json"
 import { utils } from "ethers"
 import { Contract } from "@ethersproject/contracts"

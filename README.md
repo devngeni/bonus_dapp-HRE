@@ -38,4 +38,4 @@ npm start
 - The page will reload when you make changes in the vs code.
 - Errors can also be found in the console.
 
-## Created by @edmond-k and @ronkips
+## Created by @edmond-k @ronkips and @ro61zzy
