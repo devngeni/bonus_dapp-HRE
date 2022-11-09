@@ -1,7 +1,7 @@
 import { useLogs } from "@usedapp/core"
 import { Contract } from "@ethersproject/contracts"
 import { utils } from "ethers"
-import { AbiCoder } from "ethers/lib/utils"
+// import { AbiCoder } from "ethers/lib/utils"
 import PS from "../chain-info/contracts/Splitter.json"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Container, Typography, Box } from "@mui/material"
 import { formatUnits } from "@ethersproject/units"
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 
 
 export const Transactions = () => {

@@ -20,12 +20,12 @@ export const ReleaseBonus = () => {
     const {releaseBonusCall, releaseBonusState, bulkSend, bulkAwardState} = ContractLogic()
 
     const handleTokenAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newToken = event.target.value == "" ? "" : String(event.target.value); 
+        const newToken = event.target.value === "" ? "" : String(event.target.value); 
         setAddress(newToken)
       }
 
       const handlePayeeAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newReceiver = event.target.value == "" ? "" : String(event.target.value); 
+        const newReceiver = event.target.value === "" ? "" : String(event.target.value); 
         setReceiverAddress(newReceiver)
       }
 
@@ -34,7 +34,7 @@ export const ReleaseBonus = () => {
       }
 
       const handleBulkTokenAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const bulkAddress = event.target.value == "" ? "" : String(event.target.value); 
+        const bulkAddress = event.target.value === "" ? "" : String(event.target.value); 
         setBulkTokenAddress(bulkAddress)
       }
 
@@ -90,7 +90,8 @@ export const ReleaseBonus = () => {
             mt: 13,
             fontWeight: "bold",
             fontSize: 26,
-            fontFamily: 'Audiowide'
+            fontFamily: 'Audiowide',
+            textDecoration: "underline"
           }} color="primary.main">Award Bonus</Typography>
           <Box sx={{
             bgcolor: "transparent",
