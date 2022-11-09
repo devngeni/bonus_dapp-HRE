@@ -1,5 +1,5 @@
-// import { useState, useEffect } from "react"
-import { useContractFunction} from "@usedapp/core"
+import { useState, useEffect } from "react"
+import {useCall, useContractFunction, useSendTransaction } from "@usedapp/core"
 import PS from "../chain-info/contracts/Splitter.json"
 import { utils } from "ethers"
 import { Contract } from "@ethersproject/contracts"
@@ -8,7 +8,7 @@ export const ContractLogic = () => {
     //const {chainId} = useEthers()
     const { abi } = PS
 
-    const bonusAddress = "0x4baF7003B499c405b7bC32C2142E181D891ef69b"
+    const bonusAddress = "0x5B6d87d9a6FcA0602100be5a52cc5cfFE480cbdC"
 
 
     const contractInterface = new utils.Interface(abi)

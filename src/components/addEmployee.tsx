@@ -21,12 +21,12 @@ export const AddEmployee = () => {
     const isConnected = account !== undefined
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newName = event.target.value === "" ? "" : String(event.target.value);   
+        const newName = event.target.value == "" ? "" : String(event.target.value);   
         setEmployeeName(newName);
       }
 
     const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newAddress = event.target.value === "" ? "" : String(event.target.value);   
+        const newAddress = event.target.value == "" ? "" : String(event.target.value);   
         setEmployeeAddress(newAddress);
       }
     

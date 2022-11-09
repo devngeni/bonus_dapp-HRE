@@ -52,8 +52,7 @@ export const Fund = () => {
             mt: 13,
             fontWeight: "bold",
             fontSize: 26,
-            fontFamily: 'Audiowide',
-            textDecoration: "underline"
+            fontFamily: 'Audiowide'
           }} color="primary.main">Fund Bonus Contract</Typography>
           <Box sx={{
             bgcolor: "transparent",
@@ -83,7 +82,7 @@ export const Fund = () => {
                 required={true}
                 id="outlined-required"
                 label="Required"
-                placeholder='amount'
+                placeholder="amount"
                 helperText="Token Amount"
                 onChange={handleAmountChange}
               />

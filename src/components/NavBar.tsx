@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { useState } from "react";
-import { AppBar, IconButton, Toolbar, Typography, Button, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material"
-// import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon"
+import { AppBar, IconButton, Toolbar, Typography, Stack, Button, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles"
 import AirlineSeatFlatIcon from '@mui/icons-material/AirlineSeatFlat';
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useEthers } from "@usedapp/core"
-// import { blue } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 
 
-const pages = ["AddEmployee", "Fund", "ReleaseBonus", "Transactions"];
+const pages = ["Add", "Fund", "Award", "Transactions"];
 
 const DrawerHeader = styled('div')((({ theme }) => ({
   display: "flex",
@@ -19,7 +18,7 @@ const DrawerHeader = styled('div')((({ theme }) => ({
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-  backgroundColor: "blue"
+  backgroundColor: "inherit"
 })))
 
 const drawerWidth = 241;

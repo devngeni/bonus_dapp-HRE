@@ -29,9 +29,9 @@ function App() {
       <Container maxWidth="md">
       <Routes>
       <Route path="/" element={<AddEmployee />}/>
-        <Route path="/AddEmployee" element={<AddEmployee />}/>
+        <Route path="/Add" element={<AddEmployee />}/>
         <Route path="/Fund" element={<Fund />}/>
-        <Route path="/ReleaseBonus" element={<ReleaseBonus />}/>
+        <Route path="/Award" element={<ReleaseBonus />}/>
         <Route path="/Transactions" element={<Transactions />}/>
       </Routes>
       </Container>

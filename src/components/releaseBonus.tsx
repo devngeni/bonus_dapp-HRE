@@ -20,12 +20,12 @@ export const ReleaseBonus = () => {
     const {releaseBonusCall, releaseBonusState, bulkSend, bulkAwardState} = ContractLogic()
 
     const handleTokenAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newToken = event.target.value === "" ? "" : String(event.target.value); 
+        const newToken = event.target.value == "" ? "" : String(event.target.value); 
         setAddress(newToken)
       }
 
       const handlePayeeAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newReceiver = event.target.value === "" ? "" : String(event.target.value); 
+        const newReceiver = event.target.value == "" ? "" : String(event.target.value); 
         setReceiverAddress(newReceiver)
       }
 
@@ -34,7 +34,7 @@ export const ReleaseBonus = () => {
       }
 
       const handleBulkTokenAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const bulkAddress = event.target.value === "" ? "" : String(event.target.value); 
+        const bulkAddress = event.target.value == "" ? "" : String(event.target.value); 
         setBulkTokenAddress(bulkAddress)
       }
 
@@ -90,8 +90,7 @@ export const ReleaseBonus = () => {
             mt: 13,
             fontWeight: "bold",
             fontSize: 26,
-            fontFamily: 'Audiowide',
-            textDecoration: "underline"
+            fontFamily: 'Audiowide'
           }} color="primary.main">Award Bonus</Typography>
           <Box sx={{
             bgcolor: "transparent",
@@ -121,7 +120,7 @@ export const ReleaseBonus = () => {
                 required={true}
                 id="outlined-required"
                 label="Required"
-                defaultValue="Token Address"
+                placeholder="Token Address"
                 helperText="IERC20 Token"
                 onChange={handleTokenAddress}
               />
@@ -133,14 +132,15 @@ export const ReleaseBonus = () => {
                 required={true}
                 id="outlined-required"
                 label="Required"
-                defaultValue="address"
+                placeholder="address"
                 helperText="Employee Address"
                 onChange={handlePayeeAddress}
               />
               {isConnected ? (<Button
                     sx={{ m: 4, }}
                     color="primary" variant="contained"
-                    onClick={handleBonus}>
+                    onClick={handleBonus}
+                    disabled={isMining}>
                     {isMining ? <CircularProgress color="primary" size={35} /> : "Release Bonus"}
               </Button>):(
                 <Alert severity="info">Connect Wallet to Award Bonus</Alert>
@@ -170,14 +170,15 @@ export const ReleaseBonus = () => {
                 required={true}
                 id="outlined-required"
                 label="Required"
-                defaultValue="Token Address"
+                placeholder="Token Address"
                 helperText="IERC20 Token"
                 onChange={handleBulkTokenAddress}
               />
               {isConnected ? (<Button
                     sx={{ m: 4, }}
                     color="primary" variant="contained"
-                    onClick={handleBulkBonus}>
+                    onClick={handleBulkBonus}
+                    disabled={isMining2}>
                     {isMining2 ? <CircularProgress color="primary" size={35} /> : "Bulk Release Bonus"}
               </Button>):(
                 <Alert severity="info">Connect Wallet to Bulk Award Bonus</Alert>
