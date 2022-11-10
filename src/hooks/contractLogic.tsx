@@ -16,11 +16,21 @@ export const ContractLogic = () => {
 
     const { send: addEmployee, state: addEmployeeState } =
         useContractFunction(bonusContract, "_addPayee", { transactionName: "add payee" })
+    
+    const { send: addCSV, state: addCSVState } = useContractFunction(
+      bonusContract,
+      "_addCSVPayee",
+      { transactionName: "addCSV" }
+    );
 
     const sendEmployeeInfo = (name: string, address: string, shares: number) => {
         //const mintCost = mintAmount * 0.0013
         //const asString = mintCost.toString()
         addEmployee(name, address, shares)
+    }
+
+    const sendCSVData = (names: [], addresses: [], shares: []) => {
+        addCSV(names, addresses, shares)
     }
 
     const {send: releaseBonus, state: releaseBonusState} = 
@@ -38,5 +48,5 @@ export const ContractLogic = () => {
     }
 
    
-    return { sendEmployeeInfo, addEmployeeState, releaseBonusCall, releaseBonusState, bulkSend, bulkAwardState}
+    return { sendEmployeeInfo, addEmployeeState, releaseBonusCall, releaseBonusState, bulkSend, bulkAwardState, sendCSVData, addCSVState}
 }
