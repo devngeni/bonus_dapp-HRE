@@ -8,7 +8,7 @@ export const ContractLogic = () => {
     //const {chainId} = useEthers()
     const { abi } = PS
 
-    const bonusAddress = "0x4baF7003B499c405b7bC32C2142E181D891ef69b"
+    const bonusAddress = "0x3Cf2a05B66797D83341531Cc6D5b2315EaF2594a";
 
 
     const contractInterface = new utils.Interface(abi)
