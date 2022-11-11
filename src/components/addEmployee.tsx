@@ -18,23 +18,23 @@ import Papa from "papaparse";
 export const AddEmployee = () => {
   const { notifications } = useNotifications();
   const [employeeName, setEmployeeName] = useState<string>("");
-  const [employeeaddress, setEmployeeAddress] = useState<string>("0x");
+  const [employeeAddress, setEmployeeAddress] = useState<string>("0x");
   const [shares, setShares] = useState<number>(0);
   const [data, setData] = useState("");
   const [dataJson, setDataJson] = useState<any[]>([]);
 
   const { account } = useEthers();
-  const { sendEmployeeInfo, addEmployeeState, sendCSVData, addCSVState} = ContractLogic();
+  const { sendEmployeeInfo, addEmployeeState, sendCSVData } = ContractLogic();
 
   const isConnected = account !== undefined;
 
-  let setAddressArray:any = [];
-  let setSharesArray:any = [];
-  let setNameArray:any = [];
+  let setAddressArray: any = [];
+  let setSharesArray: any = [];
+  let setNameArray: any = [];
 
   const handleChange = (e: any) => {
     setData(e.target.files[0]);
-    console.log("data", e.target.files[0]);
+    // console.log("data", e.target.files[0]);
   };
 
   const addingEmployee = (e: any) => {
@@ -44,47 +44,31 @@ export const AddEmployee = () => {
         header: true,
         delimiter: ",",
         complete: (results: any) => {
-          console.log(results.data);
+          // console.log(results.data);
           setDataJson(results.data);
         }
       });
     }
 
-    sendCSV()
-
-
-    //   const { name, shares, address } = data;
-
-    //   const provider = new ethers.providers.Web3Provider(window.ethereum);
-    //   const signer = provider.getSigner();
-    //   const priceFormatted = ethers.utils.parseEther(shares.toString());
-
-    //   let contract = new ethers.Contract(contractAddress, ABI.abi, signer);
-
-    //   let tx = await contract._addPayee(name, address, priceFormatted);
-    //   await tx.wait();
+    sendCSV();
   };
 
-  
-  
-
   const sendCSV = () => {
+    // for (let i = 0; i < dataJson.length - 1; i++) {
+    //   setAddressArray.push(dataJson[i].address);
+    //   console.log(setAddressArray);
+    // }
 
-    for (let i = 0; i < dataJson.length - 1; i++) {
-      setAddressArray.push(dataJson[i].address);
-    }
+    // for (let i = 0; i < dataJson.length - 1; i++) {
+    //   setSharesArray.push(dataJson[i].amount);
+    // }
 
-    for (let i = 0; i < dataJson.length - 1; i++) {
-      setSharesArray.push(dataJson[i].amount);
-    }
+    // for (let i = 0; i < dataJson.length - 1; i++) {
+    //   setNameArray.push(dataJson[i].name);
+    // }
 
-    for (let i = 0; i < dataJson.length - 1; i++) {
-      setNameArray.push(dataJson[i].name);
-    }
-    
-    sendCSVData(setNameArray, setAddressArray, setSharesArray)
-  }
-
+    sendCSVData(setNameArray, setAddressArray, setSharesArray);
+  };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.target.value === "" ? "" : String(event.target.value);
@@ -103,7 +87,7 @@ export const AddEmployee = () => {
   };
 
   const sendInfo = () => {
-    sendEmployeeInfo(employeeName, employeeaddress, shares);
+    sendEmployeeInfo(employeeName, employeeAddress, shares);
   };
 
   const isMining = addEmployeeState.status === "Mining";
@@ -139,11 +123,12 @@ export const AddEmployee = () => {
         <Typography
           sx={{
             display: "flex",
-            justifyContent: "center",
-            mt: 13,
+            justifyContent: "rigth",
+            mt: 7,
             fontWeight: "bold",
             fontSize: 26,
-            fontFamily: "Audiowide"
+            fontFamily: "Audiowide",
+            textDecoration: "underline"
           }}
           color="primary.main"
         >
@@ -159,7 +144,8 @@ export const AddEmployee = () => {
             marginRight: "auto",
             marginLeft: "auto",
             justifyContent: "center",
-            marginTop: 3
+            cursor: "pointer",
+            mt: 7
           }}
         >
           <Box
@@ -167,7 +153,7 @@ export const AddEmployee = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              m: 3,
+              m: 1,
               mt: 7
             }}
           >
@@ -214,25 +200,21 @@ export const AddEmployee = () => {
                 justifyContent: "center"
               }}
             >
-              <Button
-                variant="contained"
-                component="label"
-              >
-                Upload File
-                <input type="file" hidden onChange={handleChange} />
+              <Button variant="contained" component="label">
+                <input type="file" onChange={handleChange} />
               </Button>
               <Button
-                sx={{ mt: 8 }}
+                sx={{ mt: 7, m: 2 }}
                 color="primary"
                 variant="contained"
                 onClick={addingEmployee}
               >
-                  Submit CSV
+                Submit CSV
               </Button>
 
               {isConnected ? (
                 <Button
-                  sx={{ mt: 8 }}
+                  sx={{ mt: 8, ml: 9 }}
                   color="primary"
                   variant="contained"
                   onClick={sendInfo}
@@ -249,16 +231,16 @@ export const AddEmployee = () => {
                   Connect Wallet to Add employee data
                 </Alert>
               )}
+              <Snackbar
+                open={addDataSuccess}
+                autoHideDuration={5000}
+                onClose={handleCloseSnack}
+              >
+                <Alert onClose={handleCloseSnack} severity="success">
+                  Employee Added
+                </Alert>
+              </Snackbar>
             </Box>
-            <Snackbar
-              open={addDataSuccess}
-              autoHideDuration={5000}
-              onClose={handleCloseSnack}
-            >
-              <Alert onClose={handleCloseSnack} severity="success">
-                Employee Added
-              </Alert>
-            </Snackbar>
           </Box>
         </Box>
       </Box>
