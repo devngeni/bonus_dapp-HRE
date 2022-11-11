@@ -1,7 +1,6 @@
 import { useLogs } from "@usedapp/core"
 import { Contract } from "@ethersproject/contracts"
 import { utils } from "ethers"
-import { AbiCoder } from "ethers/lib/utils"
 import PS from "../chain-info/contracts/Splitter.json"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,7 +18,7 @@ export const Transactions = () => {
 
     //const [eventLogs, setEventLogs] = useState([])
 
-    const targetContractAddress = "0x4baF7003B499c405b7bC32C2142E181D891ef69b"
+    const targetContractAddress = "0x3Cf2a05B66797D83341531Cc6D5b2315EaF2594a"
 
     const { abi } = PS
 
@@ -33,20 +32,10 @@ export const Transactions = () => {
             args: [],
         },
         {
-            fromBlock: 24440971,
-            toBlock: 24440971,
+            fromBlock: 24497252,
+            toBlock: 'latest',
         }
     )
-
-    /*const handleEventSave = () => {
-        addEmployeeLogs?.value?.forEach((log) => {
-            
-            setEventLogs(log.data.account)
-        })
-     }
-
-   handleEventSave()
-  console.log(eventLogs)*/
 
     const paymentLogs = useLogs(
         {
@@ -55,8 +44,8 @@ export const Transactions = () => {
             args: [],
         },
         {
-            fromBlock: 24411313,
-            toBlock: 24411313,
+            fromBlock: 24440971,
+            toBlock: 'latest',
         }
     )
 

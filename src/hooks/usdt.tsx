@@ -8,7 +8,7 @@ export const MockToken = () => {
 
     const tokenAddress = "0xFEF0D52722e914b37C3f655CAb7992FaCc739099"
 
-    const contractAddress = "0x5B6d87d9a6FcA0602100be5a52cc5cfFE480cbdC"
+    const contractAddress = "0x3Cf2a05B66797D83341531Cc6D5b2315EaF2594a"
 
     const mockInterface = new utils.Interface(abi)
     const mockErc20Contract = new Contract(tokenAddress, mockInterface)

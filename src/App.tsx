@@ -12,7 +12,7 @@ import { Routes, Route } from "react-router-dom";
 const config: Config = {
   readOnlyChainId: BSCTestnet.chainId,
   readOnlyUrls: {
-    [BSCTestnet.chainId]: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+    [BSCTestnet.chainId]: 'https://data-seed-prebsc-1-s3.binance.org:8545/',
   },
   networks: [BSCTestnet],
   notifications: {
